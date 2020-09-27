@@ -1,0 +1,27 @@
+body{
+   font-family: Roboto;
+    background-image: url("../img/cad.jpeg");
+    background-repeat: no-repeat;
+}
+
+.header h2,span{
+    color: white;
+
+}
+
+.header h2{
+    font-size: 60px;
+    -webkit-text-stroke-width: 2px; /* largura da borda */
+    -webkit-text-stroke-color: black;
+}
+
+.header span{
+    font-size: 15px;
+    -webkit-text-stroke-width: 0.1px; /* largura da borda */
+    -webkit-text-stroke-color: black;
+}
+.footer p{
+    color: white;
+    font-size: 20px;
+
+}

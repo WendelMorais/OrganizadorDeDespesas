@@ -92,7 +92,7 @@ $busca_usuario = mysqli_fetch_array($busca_usuario);
         <div class="bg-light border-right" id="sidebar-wrapper">
             <div class="sidebar-heading">Linguagens de Programação</div>
             <div class="list-group list-group-flush">
-                <a href="#" class="list-group-item list-group-item-action bg-light text-dark">Cadastrar Dados</a>
+                <a href="../view/cadastrar_dados.php" class="list-group-item list-group-item-action bg-light text-dark">Cadastrar Dados</a>
                 <a href="#" class="list-group-item list-group-item-action bg-light">Ver Despesas</a>
                 <li class="list-group">
                     <a href="../view/listar_usuarios.php" class="list-group-item list-group-item-action  bg-dark text-light">Listar dados</a>

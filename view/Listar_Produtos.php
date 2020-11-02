@@ -1,10 +1,21 @@
 <?php
 
-include "php/config.php";
+include "../php/config.php";
 
 $buscar_dados = "select * from debcred ";
 $buscar_dados = mysqli_query($conectou, $buscar_dados);
 
+session_start();
+
+if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == true))
+{
+    unset($_SESSION['email']);
+    unset($_SESSION['senha']);
+    echo "<script>alert('usuario não conectado');</script>";
+    header('location: ../index.php');
+}
+
+$logado = $_SESSION['email'];
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -19,10 +30,10 @@ $buscar_dados = mysqli_query($conectou, $buscar_dados);
     <title>Produtos Cadastrados</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/simple-sidebar.css" rel="stylesheet">
+    <link href="../css/simple-sidebar.css" rel="stylesheet">
 
 </head>
 
@@ -69,7 +80,7 @@ $buscar_dados = mysqli_query($conectou, $buscar_dados);
                 <a href="#" class="list-group-item list-group-item-action bg-light">Ver Despesas</a>
                 <a href="listar_usuarios.php" class="list-group-item list-group-item-action  bg-light text-dark">Listar Usuarios</a>
                 <a href="#" class="list-group-item list-group-item-action bg-dark text-light">Produtos Cadastrados</a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
+                <a href="graficos.php" class="list-group-item list-group-item-action bg-light">Gráficos</a>
                 <a href="#" class="list-group-item list-group-item-action bg-light">Status</a>
             </div>
         </div>
@@ -140,8 +151,8 @@ $buscar_dados = mysqli_query($conectou, $buscar_dados);
 <!-- /#wrapper -->
 
 <!-- Bootstrap core JavaScript -->
-<script src="js/jquery-3.5.1.min.js"></script>
-<script src="js/bootstrap.bundle.min.js"></script>
+<script src="../js/jquery-3.5.1.min.js"></script>
+<script src="../js/bootstrap.bundle.min.js"></script>
 
 <!-- Menu Toggle Script -->
 <script>

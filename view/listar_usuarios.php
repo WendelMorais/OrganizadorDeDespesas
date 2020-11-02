@@ -5,6 +5,17 @@ include "../php/config.php";
 $buscar_dados = "select * from usuario order by nome ASC";
 $buscar_dados = mysqli_query($conectou, $buscar_dados);
 
+session_start();
+
+if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == true))
+{
+    unset($_SESSION['email']);
+    unset($_SESSION['senha']);
+    echo "<script>alert('usuario não conectado');</script>";
+    header('location: ../index.php');
+}
+
+$logado = $_SESSION['email'];
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -68,8 +79,8 @@ $buscar_dados = mysqli_query($conectou, $buscar_dados);
                 <a href="cadastrar_dados.php" class="list-group-item list-group-item-action bg-light text-dark">Cadastrar Dados</a>
                 <a href="#" class="list-group-item list-group-item-action bg-light">Ver Despesas</a>
                 <a href="listar_usuarios.php" class="list-group-item list-group-item-action bg-light bg-dark text-light">Listar Usuarios</a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">Events</a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
+                <a href="Listar_Produtos.php" class="list-group-item list-group-item-action bg-light">Produtos Cadastrados</a>
+                <a href="graficos.php" class="list-group-item list-group-item-action bg-light">Gráficos</a>
                 <a href="#" class="list-group-item list-group-item-action bg-light">Status</a>
             </div>
         </div>
@@ -119,7 +130,7 @@ $buscar_dados = mysqli_query($conectou, $buscar_dados);
                                                     </div>
                                                        <br/>
                                                     <div class='text-center'>  
-                                                        <a href='../php/editar_usuario.php?cod_usuario=$cod_usuario'><button  class='btn btn-info text-light' type='submit'>Editar</button></a>
+                                                        <a href='../view/editar_usuario.php?cod_usuario=$cod_usuario'><button  class='btn btn-info text-light' type='submit'>Editar</button></a>
                                                         <a href='../php/excluir_usuario.php?cod_usuario=$cod_usuario'<button  class='btn btn-warning text-light' type='submit'>Excluir</button></a>
                                                         <hr>
                                                     </div>  

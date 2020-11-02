@@ -1,0 +1,3 @@
+- Criar um link de redirecionamento dentro da de uma div
+- Criar um grafico que mostre as despesas mes a mes
+- Um mensagem em java script que alerte o usuario que ele gastou mais ou gastou menos durante o mes selecionado no grafico.

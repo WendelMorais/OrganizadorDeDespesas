@@ -16,7 +16,7 @@ include("config.php");
     $inserir = mysqli_query($conectou, $inseri);
 
     echo "<script>alert('Cadastro de produto efetuado com sucesso')</script>";
-    echo "<script>window.location = 'cadastrar_dados.php'</script>";
+    echo "<script>window.location = '../view/cadastrar_dados.php'</script>";
 
 
 

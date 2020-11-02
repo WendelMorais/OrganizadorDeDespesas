@@ -1,3 +1,18 @@
+<?php
+session_start();
+
+if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == true))
+{
+    unset($_SESSION['email']);
+    unset($_SESSION['senha']);
+    echo "<script>alert('usuario não conectado');</script>";
+    header('location: ../index.php');
+}
+
+$logado = $_SESSION['email'];
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -57,11 +72,11 @@
         <div class="bg-light border-right" id="sidebar-wrapper">
             <div class="sidebar-heading">Linguagens de Programação</div>
             <div class="list-group list-group-flush">
-                <a href="#" class="list-group-item list-group-item-action bg-dark text-light">Cadastrar Dados</a>
+                <a href="cadastrar_dados.php" class="list-group-item list-group-item-action bg-dark text-light">Cadastrar Dados</a>
                 <a href="#" class="list-group-item list-group-item-action bg-light">Ver Despesas</a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">Overview</a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">Events</a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
+                <a href="listar_usuarios.php" class="list-group-item list-group-item-action bg-light">Listar Usuários</a>
+                <a href="Listar_Produtos.php.php" class="list-group-item list-group-item-action bg-light">Produtos Cadastrados</a>
+                <a href="graficos.php" class="list-group-item list-group-item-action bg-light">Gráficos</a>
                 <a href="#" class="list-group-item list-group-item-action bg-light">Status</a>
             </div>
         </div>
@@ -77,7 +92,7 @@
             <div class="dados border border-warning p-3">
                 <div class="row">
                     <div class="col-12 ">
-                        <form action="salvar_dados.php text-center" method="post">
+                        <form action="../php/salvar_dados.php" method="post">
                             <div class="col-md-6 offset-md-3 ">
                                 <div class="form-group">
                                     <label for="pagamento">Tipo de pagamento:</label>

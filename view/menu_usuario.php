@@ -1,3 +1,16 @@
+<?php
+session_start();
+
+if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == true))
+{
+    unset($_SESSION['email']);
+    unset($_SESSION['senha']);
+    echo "<script>alert('usuario não conectado');</script>";
+    header('location: ../index.php');
+}
+
+$logado = $_SESSION['email'];
+?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -16,16 +29,9 @@
 
   <!-- Custom styles for this template -->
   <link href="../css/simple-sidebar.css" rel="stylesheet">
-<?php
-    session_start();
-    if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == true))
-    {
-    unset($_SESSION['email']);
-    unset($_SESSION['senha']);
-    }
 
-    $logado = $_SESSION['login'];
-?>
+
+
 </head>
 
 <body>
@@ -70,9 +76,9 @@
         <a href="cadastrar_dados.php" class="list-group-item list-group-item-action bg-light">Cadastrar Dados</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">Ver Despesas</a>
         <a href="listar_usuarios.php" class="list-group-item list-group-item-action bg-light">Listar Usuários</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Events</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Status</a>
+          <a href="Listar_Produtos.php" class="list-group-item list-group-item-action bg-light">Produtos Cadastrados</a>
+          <a href="graficos.php" class="list-group-item list-group-item-action bg-light">Gráficos</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light" onclick='insereTexto()' value='Inserir texto' >Site Unicruz</a>
       </div>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -84,8 +90,9 @@
         <p>Essa página esta sendo contruida para ser uma sistema de despesas pessoas, onde o usuario cadastra os valores e pode ir acompanhando suas economias mês a mês</p>
         <p>Presente trabalho sendo desenvolvida durante a matéria de Linguagens de Programação, ministrada pelo Profº Rodrigo Antoniazzi. Desenvolvimento Wendel Moura.</p>
           <p>Para utilização do sistema, selecione alguma opção no side-bar da esquerda. Obrigado!</p>
+          <div id="divTeste" ></div>
       </div>
-    </div>
+
     <!-- /#page-content-wrapper -->
 
   </div>
@@ -103,6 +110,10 @@ $("#menu-toggle").click(function(e) {
 });
   </script>
 
+    <script type="text/javascript">
+        function insereTexto()
+        {document.getElementById('divTeste').innerHTML = 'https://home.unicruz.edu.br/';}
+    </script>
 </body>
 
 </html>

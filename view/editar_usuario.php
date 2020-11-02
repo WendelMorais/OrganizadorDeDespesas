@@ -1,6 +1,6 @@
 <?php
 
-include("config.php");
+include("../php/config.php");
 
 $cod_usuario = $_GET["cod_usuario"];
 
@@ -10,29 +10,21 @@ $busca_usuario = "select * from usuario where cod_usuario = $cod_usuario";
 $busca_usuario = mysqli_query($conectou, $busca_usuario);
 $busca_usuario = mysqli_fetch_array($busca_usuario);
 
+session_start();
+
+if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == true))
+{
+    unset($_SESSION['email']);
+    unset($_SESSION['senha']);
+    echo "<script>alert('usuario não conectado');</script>";
+    header('location: ../index.php');
+}
+
+$logado = $_SESSION['email'];
+
+
 ?>
-<!--<html>-->
-<!--    <head>-->
-<!--        <title></title>-->
-<!--    </head>-->
-<!--<body>-->
-<!--	<form ....action="salvar_edicao.php" method="post">-->
-<!--    <input type="hidden" name="cod_usuario" value="--><?php //echo $busca_usuario['cod_usuario']; ?><!--"-->
-<!--    <label>Nome</label>-->
-<!--    <input type="text" name="nome" value="--><?php //echo $busca_usuario['nome']; ?><!--">-->
-<!--    <br>-->
-<!--    <label>CPF</label>-->
-<!--    <input type="text" name="cpf" value="--><?php //echo $busca_usuario['cpf']; ?><!--">-->
-<!--    <br>-->
-<!--    <label>OBS</label>-->
-<!--    <textarea name="obs" cols="50" rows="10">--><?php //echo $busca_usuario['nome'];?><!--</textarea>-->
-<!--    <br>-->
-<!--    <label>Data de Nascimento</label>-->
-<!--    <input type="date" name="data_nasc" value="--><?php //echo $busca_usuario['data_nasc']; ?><!--">-->
-<!--	<input type="submit" name="enviar" value="Alterar">-->
-<!--    </form>-->
-<!--</body>-->
-<!--</html>-->
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -67,7 +59,7 @@ $busca_usuario = mysqli_fetch_array($busca_usuario);
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
-                    <a class="nav-link" href="../view/menu_usuario.php">Inicio<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="menu_usuario.php">Inicio<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Link</a>
@@ -92,17 +84,17 @@ $busca_usuario = mysqli_fetch_array($busca_usuario);
         <div class="bg-light border-right" id="sidebar-wrapper">
             <div class="sidebar-heading">Linguagens de Programação</div>
             <div class="list-group list-group-flush">
-                <a href="../view/cadastrar_dados.php" class="list-group-item list-group-item-action bg-light text-dark">Cadastrar Dados</a>
+                <a href="cadastrar_dados.php" class="list-group-item list-group-item-action bg-light text-dark">Cadastrar Dados</a>
                 <a href="#" class="list-group-item list-group-item-action bg-light">Ver Despesas</a>
                 <li class="list-group">
-                    <a href="../view/listar_usuarios.php" class="list-group-item list-group-item-action  bg-dark text-light">Listar dados</a>
+                    <a href="listar_usuarios.php" class="list-group-item list-group-item-action  bg-dark text-light">Listar dados</a>
                     <ul>
                         <li class="list-group-item list-group-item-action  text-dark my-2" >
                             <span>Editar Usuário</span>
                     </ul>
                 </li>
-                <a href="#" class="list-group-item list-group-item-action bg-light">Events</a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
+                <a href="Listar_Produtos.php.php" class="list-group-item list-group-item-action bg-light">Produtos Cadastrados</a>
+                <a href="graficos.php" class="list-group-item list-group-item-action bg-light">Gráficos</a>
                 <a href="#" class="list-group-item list-group-item-action bg-light">Status</a>
             </div>
         </div>

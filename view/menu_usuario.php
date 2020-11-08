@@ -1,4 +1,5 @@
 <?php
+include "../php/config.php";
 session_start();
 
 if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == true))
@@ -10,6 +11,17 @@ if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == tru
 }
 
 $logado = $_SESSION['email'];
+
+
+$query = "select nome from usuario where email = '$logado' ";
+
+$consulta = mysqli_query($conectou,$query);
+
+$valor =  mysqli_fetch_array($consulta);
+
+
+$usuario1 = $valor['nome'];
+
 ?>
 
 <!DOCTYPE html>
@@ -55,7 +67,7 @@ $logado = $_SESSION['email'];
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Usuario
+                       <?php echo $usuario1   ?>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#">Preferencias</a>

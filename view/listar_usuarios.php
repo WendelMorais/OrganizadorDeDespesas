@@ -2,8 +2,6 @@
 
 include "../php/config.php";
 
-$buscar_dados = "select * from usuario order by nome ASC";
-$buscar_dados = mysqli_query($conectou, $buscar_dados);
 
 session_start();
 
@@ -16,6 +14,16 @@ if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == tru
 }
 
 $logado = $_SESSION['email'];
+
+
+$query = "select nome from usuario where email = '$logado' ";
+
+$consulta = mysqli_query($conectou,$query);
+
+$valor =  mysqli_fetch_array($consulta);
+
+
+$usuario1 = $valor['nome'];
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -58,7 +66,7 @@ $logado = $_SESSION['email'];
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Usuario
+                       <?php echo $usuario1 ?>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#">Preferencias</a>
@@ -100,6 +108,9 @@ $logado = $_SESSION['email'];
                             <div class=" text-center">
 
                                 <?php
+
+                                $buscar_dados = "select * from usuario order by nome ASC";
+                                $buscar_dados = mysqli_query($conectou, $buscar_dados);
                                 while ($linha = mysqli_fetch_array($buscar_dados)) {
                                     $cod_usuario = $linha["cod_usuario"]; //$linha[0];
                                     $nome = $linha["nome"];//$linha[1];

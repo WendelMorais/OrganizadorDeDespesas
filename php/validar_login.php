@@ -14,6 +14,9 @@ $consulta = mysqli_query($conectou,$query);
 
 $valor = mysqli_num_rows($consulta);
 
+$linha = mysqli_fetch_object($valor);
+$coduser = $linha->idUsuario;
+$_SESSION["codusuario"] = $coduser;
 if($valor>0){
     $_SESSION['email'] = $email;
     $_SESSION['senha'] = $senha;

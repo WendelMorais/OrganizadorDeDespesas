@@ -1,7 +1,27 @@
 <?php
 
 include "../php/config.php";
+session_start();
 
+if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == true))
+{
+    unset($_SESSION['email']);
+    unset($_SESSION['senha']);
+    echo "<script>alert('usuario não conectado');</script>";
+    header('location: ../index.php');
+}
+
+$logado = $_SESSION['email'];
+
+
+ $query = "select nome from usuario where email = '$logado' ";
+
+$consulta = mysqli_query($conectou,$query);
+
+ $valor =  mysqli_fetch_array($consulta);
+
+
+$usuario1 = $valor['nome'];
 
 ?>
 
@@ -632,7 +652,7 @@ include "../php/config.php";
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Usuario
+                        <?php echo $usuario1 ?>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#">Preferencias</a>
@@ -664,73 +684,168 @@ include "../php/config.php";
 
         <div class="container-fluid text-center">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12 ml-5">
                         <h1 class="mt-4 ">Graficos</h1>
-                    <input type="button" value="Despesas do Ano" onclick="mostrar('fu')">
+                    <input type="button" value="Despesas do Ano" class="btn btn-primary" onclick="mostrar('fu')">
                     <div id="fu" class="hidden" >
                         <div id="columnchart_values" style="width: auto; height: 600px;"></div>
                     </div>
 
-                    <input type="button" value="Março" onclick="mostrar('mr')">
+                    <input type="button" value="Março" class="btn btn-primary" onclick="mostrar('mr')">
                     <div id="mr" class="hidden">
                         <div id="março" style="width: auto; height: 600px;"></div>
                     </div>
 
-                    <input type="button" value="Abril" onclick="mostrar('ab')">
+                    <input type="button" value="Abril" class="btn btn-primary" onclick="mostrar('ab')">
                     <div id="ab" class="hidden">
                         <div id="abril" style="width: auto; height: 600px;"></div>
                     </div>
 
-                    <input type="button" value="Maio" onclick="mostrar('mai')">
+                    <input type="button" value="Maio" class="btn btn-primary" onclick="mostrar('mai')">
                     <div id="mai" class="hidden">
                         <div id="maio" style="width: auto; height: 600px;"></div>
                     </div>
 
-                    <input type="button" value="Junho" onclick="mostrar('jn')">
+                    <input type="button" value="Junho"class="btn btn-primary"  onclick="mostrar('jn')">
                     <div id="jn" class="hidden">
                         <div id="junho" style="width: auto; height: 600px;"></div>
                     </div>
 
-                    <input type="button" value="Julho" onclick="mostrar('jl')">
+                    <input type="button" value="Julho" class="btn btn-primary"  onclick="mostrar('jl')">
                     <div id="jl" class="hidden">
                         <div id="julho" style="width: auto; height: 600px;"></div>
                     </div>
 
-                    <input type="button" value="Agosto" onclick="mostrar('ag')">
+                    <input type="button" value="Agosto" class="btn btn-primary" onclick="mostrar('ag')">
                     <div id="ag" class="hidden">
                         <div id="agosto" style="width: auto; height: 600px;"></div>
                     </div>
 
-                    <input type="button" value="Setembro" onclick="mostrar('set')">
+                    <input type="button" value="Setembro" class="btn btn-primary" onclick="mostrar('set')">
                     <div id="set" class="hidden">
                         <div id="setembro" style="width: auto; height: 600px;"></div>
                     </div>
 
-                    <input type="button" value="Outubro" onclick="mostrar('ou')">
+                    <input type="button" value="Outubro" class="btn btn-primary" onclick="mostrar('ou')">
                     <div id="ou" class="hidden">
                         <div id="outubro" style="width: auto; height: 600px;"></div>
                     </div>
 
-                    <input type="button" value="Novembro" onclick="mostrar('nv')">
+                    <input type="button" value="Novembro" class="btn btn-primary"  onclick="mostrar('nv')">
                     <div id="nv" class="hidden">
                         <div id="novembro" style="width: auto; height: 600px;"></div>
                     </div>
 
-                    <input type="button" value="Dezembro" onclick="mostrar('dz')">
+                    <input type="button" value="Dezembro" class="btn btn-primary" onclick="mostrar('dz')">
                     <div id="dz" class="hidden">
                         <div id="dezembro" style="width: auto; height: 600px;"></div>
                     </div>
 
-                    <input type="button" value="Janeiro" onclick="mostrar('jn')">
+                    <input type="button" value="Janeiro" class="btn btn-primary" onclick="mostrar('jn')">
                     <div id="jn" class="hidden">
                         <div id="janeiro" style="width: auto; height: 600px;"></div>
                     </div>
 
-                    <input type="button" value="Fevereiro" onclick="mostrar('fv')">
+                    <input type="button" value="Fevereiro" class="btn btn-primary" onclick="mostrar('fv')">
                     <div id="fv" class="hidden">
                         <div id="fevereiro" style="width: auto; height: 600px;"></div>
                     </div>
 
+                </div>
+                <div class="container">
+                    <div class=" my-5 center-block">
+                        <hr color="black">
+                        <input type="button" value="Debito/Credito" class="btn btn-primary" onclick="mostrar('db') ">
+                        <div id="db" class="hidden">
+                            <form name="teste" action="#" method="GET"> <!--ano, mes, tipo (mercado, farmacia,...., todos)-->
+                                <label> Selecione periodo inicial</label>
+                                <select class="form-control" name="mesi">
+                                    <option value="">Selecione</option>
+                                    <option value="2020-01-01">Janeiro</option>
+                                    <option value="2020-02-01">Fevereiro</option>
+                                    <option value="2020-03-01">Março</option>
+                                    <option value="2020-04-01">Abril</option>
+                                    <option value="2020-05-01">Maio</option>
+                                    <option value="2020-06-01">Junho</option>
+                                    <option value="2020-07-01">Julho</option>
+                                    <option value="2020-08-01">Agosto</option>
+                                    <option value="2020-09-01">Setembro</option>
+                                    <option value="2020-10-01">Outubro</option>
+                                    <option value="2020-11-01">Novembro</option>
+                                    <option value="2020-12-01">Dezembro</option>
+                                </select>
+                                <br>
+                                <label> Selecione periodo final</label>
+                                <select class="form-control" name="mesf">
+                                    <option value="">Selecione</option>
+                                    <option value="2020-01-31">Janeiro</option>
+                                    <option value="2020-02-28">Fevereiro</option>
+                                    <option value="2020-03-31">Março</option>
+                                    <option value="2020-04-30">Abril</option>
+                                    <option value="2020-05-31">Maio</option>
+                                    <option value="2020-06-30">Junho</option>
+                                    <option value="2020-07-31">Julho</option>
+                                    <option value="2020-08-31">Agosto</option>
+                                    <option value="2020-09-30">Setembro</option>
+                                    <option value="2020-10-31">Outubro</option>
+                                    <option value="2020-11-30">Novembro</option>
+                                    <option value="2020-12-31">Dezembro</option>
+                                </select>
+                                <input type="submit" value="gerar" class="form-control form-control-sm my-5 btn-success">
+                                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                                <script type="text/javascript">
+                                    google.charts.load("current", {packages:['corechart']});
+                                    google.charts.setOnLoadCallback(drawChart);
+                                    function drawChart() {
+                                        var data = google.visualization.arrayToDataTable([
+                                            ["Categoria", "Valor", { role: "style" } ],
+
+                                            <?php
+
+                                            $mes_inicial 	= $_GET['mesi'];
+                                            $mes_final = $_GET['mesf'];
+
+                                            $query = "select sum(valor) as valor, tipo, data from debcred where data between '$mes_inicial' and '$mes_final' group by tipo ASC";
+                                            $buscar = mysqli_query($conectou, $query);
+                                            while($dados = mysqli_fetch_array($buscar))
+                                            {
+                                            $categoria = utf8_encode($dados['tipo']);
+                                            $valor  	= $dados['valor'];
+                                            $mes_final = $dados['data'];
+                                            $mes_inicial = $dados['data'];
+                                            ?>
+
+                                            ["<?php echo $categoria ?>", <?php echo $valor ?>, "#k65788"],
+
+                                            <?php
+                                            }
+                                            ?>
+                                        ]);
+
+                                        var view = new google.visualization.DataView(data);
+                                        view.setColumns([0, 1,
+                                            { calc: "stringify",
+                                                sourceColumn: 1,
+                                                type: "string",
+                                                role: "annotation" },
+                                            2]);
+
+                                        var options = {
+                                            title: "Gráfico de gastos",
+                                            width: 600,
+                                            height: 400,
+                                            bar: {groupWidth: "95%"},
+                                            legend: { position: "none" },
+
+                                        };
+                                        var chart = new google.visualization.ColumnChart(document.getElementById("debitocredito"));
+                                        chart.draw(view, options);
+                                    }
+                                </script>
+                            </form>
+                            <div id="debitocredito" style="width: 900px; height: 300px;"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

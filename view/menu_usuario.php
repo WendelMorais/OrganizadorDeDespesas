@@ -25,10 +25,12 @@ $usuario1 = $valor['nome'];
 ?>
 
 <!DOCTYPE html>
+
 <html lang="pt-br">
 
-<head>
 
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
@@ -41,91 +43,103 @@ $usuario1 = $valor['nome'];
 
   <!-- Custom styles for this template -->
   <link href="../css/simple-sidebar.css" rel="stylesheet">
-
-
+  <link href="../css/stylemenu.css" rel="stylesheet">
+<?php  include "../view/Nav_bar.php"; ?>
 
 </head>
 
-<body>
+<style>
+
+  </style>
+
+<body style="background-color: grey">
+<div class="d-flex" id="wrapper">
+
+    <!-- Sidebar -->
+    <?php  include "../view/side_bar.php"; ?>
+
+
+
 
 <div id="page-content-wrapper">
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom ">
-        <button class="btn btn-light " id="menu-toggle">Ocultar menu lateral</button>
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Inicio<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                       <?php echo $usuario1   ?>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Preferencias</a>
-                        <a class="dropdown-item" href="#">Sair</a>
-                        <div class="dropdown-divider"></div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <div class="container-fluid bg-light">
+      
+            <div class="row text-center ">
 
-  <div class="d-flex" id="wrapper">
+                  <div class="col-12 mt-4 float-left"> 
+                        <h1>Bem-vindo ao Sistema de Despesas</h1>
+                  </div>
+              </div>
+              <div class="container"> 
+              <div class="row">
+                <div class="col-12 text-center" id="galeria">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                          <ol class="carousel-indicators ">
+                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                          </ol>
+                          <div class="carousel-inner">
+                            <div class="carousel-item active">
+                              <img class="d-block w-30 img-responsive" src="../bg/2684520-01.png" alt="First slide">
+                            </div>
+                            <div class="carousel-item">
+                              <img class="d-block w-30 img-responsive" src="../bg/2.jpg" alt="Second slide">
+                            </div>
+                            <div class="carousel-item">
+                              <img class="d-block w-30 img-responsive" src="../bg/3.png" alt="Third slide">
+                            </div>
+                          </div>
+                          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                          </a>
+                          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                          </a>
+                        </div>
+                </div>
 
-    <!-- Sidebar -->
-    <div class="bg-light border-right" id="sidebar-wrapper">
-      <div class="sidebar-heading">Linguagens de Programação</div>
-      <div class="list-group list-group-flush">
-        <a href="cadastrar_dados.php" class="list-group-item list-group-item-action bg-light">Cadastrar Dados</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Ver Despesas</a>
-        <a href="listar_usuarios.php" class="list-group-item list-group-item-action bg-light">Listar Usuários</a>
-          <a href="Listar_Produtos.php" class="list-group-item list-group-item-action bg-light">Produtos Cadastrados</a>
-          <a href="graficos.php" class="list-group-item list-group-item-action bg-light">Gráficos</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light" onclick='insereTexto()' value='Inserir texto' >Site Unicruz</a>
-      </div>
+              </div>
+              </div>
+          <div class="row text-center mt-4 text-dark">
+                  <div class="col-12 ">
+                
+                    <p>Essa página esta sendo contruida para ser uma sistema de despesas pessoas, onde o usuario cadastra os valores e pode ir acompanhando suas economias mês a mês</p>
+                    <p>Presente trabalho sendo desenvolvida durante a matéria de Linguagens de Programação, ministrada pelo Profº Rodrigo Antoniazzi. Desenvolvimento Wendel Moura.</p>
+                      <p>Para utilização do sistema, selecione alguma opção no side-bar da esquerda. Obrigado!</p>
+                  </div>
+          </div>
+            
     </div>
-    <!-- /#sidebar-wrapper -->
+      
+</div>
 
-    <!-- Page Content -->
+</div>
 
-      <div class="container-fluid text-center">
-        <h1 class="mt-4 ">Bem-vindo ao Sistema de Despesas</h1>
-        <p>Essa página esta sendo contruida para ser uma sistema de despesas pessoas, onde o usuario cadastra os valores e pode ir acompanhando suas economias mês a mês</p>
-        <p>Presente trabalho sendo desenvolvida durante a matéria de Linguagens de Programação, ministrada pelo Profº Rodrigo Antoniazzi. Desenvolvimento Wendel Moura.</p>
-          <p>Para utilização do sistema, selecione alguma opção no side-bar da esquerda. Obrigado!</p>
-          <div id="divTeste" ></div>
-      </div>
-
-    <!-- /#page-content-wrapper -->
-
-  </div>
-  <!-- /#wrapper -->
-
-  <!-- Bootstrap core JavaScript -->
   <script src="../js/jquery-3.5.1.min.js"></script>
   <script src="../js/bootstrap.bundle.min.js"></script>
 
-  <!-- Menu Toggle Script -->
+ 
   <script>
 $("#menu-toggle").click(function(e) {
     e.preventDefault();
     $("#wrapper").toggleClass("toggled");
 });
+$('.carousel').carousel({
+  interval: 2000
+})
   </script>
 
     <script type="text/javascript">
         function insereTexto()
         {document.getElementById('divTeste').innerHTML = 'https://home.unicruz.edu.br/';}
     </script>
+
 </body>
 
 </html>

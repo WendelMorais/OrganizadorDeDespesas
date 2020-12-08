@@ -1,13 +1,13 @@
 <?php
-include("./php/config.php");
+
 // Pasta onde o arquivo vai ser salvo
-$_UP['D:/xampp/htdocs/LP/imagens'] = 'D:/xampp/htdocs/LP/imagens';
+$_UP['destino'] = 'C:/xampp/htdocs/LP/imagens';
 
 // Tamanho máximo do arquivo (em Bytes)
 $_UP['tamanho'] = 1024 * 1024 * 2; // 2Mb
 
 // Array com as extensões permitidas
-$_UP['extensoes'] = array('jpg', 'png', 'gif', 'pdf');
+$_UP['extensoes'] = array('jpg', 'png', 'gif');
 
 // Renomeia o arquivo? (Se true, o arquivo será salvo como .jpg e um nome único)
 $_UP['renomeia'] = false;
@@ -19,6 +19,10 @@ $_UP['erros'][2] = 'O arquivo ultrapassa o limite de tamanho especifiado no HTML
 $_UP['erros'][3] = 'O upload do arquivo foi feito parcialmente';
 $_UP['erros'][4] = 'Não foi feito o upload do arquivo';
 
+$destino= $_UP['destino'];
+
+
+
 // Verifica se houve algum erro com o upload. Se sim, exibe a mensagem do erro
 if ($_FILES['arquivo']['error'] != 0) {
     die("Não foi possível fazer o upload, erro:<br />" . $_UP['erros'][$_FILES['arquivo']['error']]);
@@ -28,10 +32,6 @@ if ($_FILES['arquivo']['error'] != 0) {
 // Caso script chegue a esse ponto, não houve erro com o upload e o PHP pode continuar
 
 // Faz a verificação da extensão do arquivo
-$extensao = strtolower(end(explode('.', $_FILES['arquivo']['name'])));
-if (array_search($extensao, $_UP['extensoes']) === false) {
-    echo "Por favor, envie arquivos com as seguintes extensões: jpg, png ou gif";
-}
 
 // Faz a verificação do tamanho do arquivo
 else if ($_UP['tamanho'] < $_FILES['arquivo']['size']) {
@@ -50,20 +50,25 @@ else {
     }
 
 // Depois verifica se é possível mover o arquivo para a pasta escolhida
-    if (move_uploaded_file($_FILES['arquivo']['tmp_name'], $_UP['D:/xampp/htdocs/LP/imagens'] . $nome_final)) {
+    if (move_uploaded_file($_FILES['arquivo']['tmp_name'],$_UP['destino'].$nome_final)) {
 // Upload efetuado com sucesso, exibe uma mensagem e um link para o arquivo
         echo "Upload efetuado com sucesso!";
-        echo '<br /><a href="' . $_UP['D:/xampp/htdocs/LP/imagens'] . $nome_final . '">Clique aqui para acessar o arquivo</a>';
+        echo '<br /><a href="'.$_UP['destino'].$nome_final.'">Clique aqui para acessar o arquivo</a>';
     } else {
 // Não foi possível fazer o upload, provavelmente a pasta está incorreta
         echo "Não foi possível enviar o arquivo, tente novamente";
     }
+$destino= $_UP['destino'];
+
+$final = ''.$destino.'/'.$nome_final;
 
 }
-$insert = "INSERT into usuario values('','$caminho','teste')";
+include("./config.php");
+
+$insert = "INSERT INTO `imagem`(`cd_imagem`, `imagem`) VALUES ('','$final')";
 
 
-mysqli_query($insert);
+$inserir = mysqli_query($conectou, $insert);
 
 ?>
 

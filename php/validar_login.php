@@ -21,14 +21,14 @@ if($valor>0){
     $_SESSION['email'] = $email;
     $_SESSION['senha'] = $senha;
     echo "<script>alert('usuario conectado');</script>";
-    echo "<script>window.location = '../view/menu_usuario.php'</script>";
+    echo "<script>window.location = '../view/menu_usuario'</script>";
     //header('location:menu_usuario.php');
 }
 else{
     unset ($_SESSION['login']);
     unset ($_SESSION['senha']);
     echo "<script>alert('usuario ou senha errado');</script>";
-    echo "<script>window.location = '../index.php'</script>";
+    echo "<script>window.location = '../index'</script>";
 
 }
 

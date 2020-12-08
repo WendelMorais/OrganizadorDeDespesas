@@ -25,7 +25,7 @@
                     <a class="nav-link" href="#">Inicio<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="view/menu_usuario.php">Cadastrar Produto</a>
+                    <a class="nav-link" href="view/menu_usuario">Cadastrar Produto</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="#">Saldo Total</a>
@@ -39,7 +39,7 @@
     <div class="row">
         <div class="col-12 col-md-12">
             <div class="login mx-auto col-xl-12 col-md-12 col-lg-12">
-                <form class="form" method="post" action="php/validar_login.php">
+                <form class="form" method="post" action="php/validar_login">
                     <div class="card ">
                         <div class="text-center">
                             <h2>Faça o Login</h2>
@@ -51,8 +51,8 @@
                         <label class="campos">
                             <p><input class="inp" type="password" name="senha" placeholder="Senha"></p>
                             <a><input type="submit" value="ENTRAR" name="entrar">
-                                <button><a href="view/primeiro_acesso.php">Cadastrar</a></button>
-                                <button><a href="view/recup_senha.php">Esqueci Senhar</a></button>
+                                <button><a href="view/primeiro_acesso">Cadastrar</a></button>
+                                <button><a href="view/recup_senha">Esqueci Senhar</a></button>
                         </label>
                 </form>
             </div>

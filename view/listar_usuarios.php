@@ -43,68 +43,27 @@ $usuario1 = $valor['nome'];
     <!-- Custom styles for this template -->
     <link href="../css/simple-sidebar.css" rel="stylesheet">
 
+    <?php  include "../view/Nav_bar.php"; ?>
 </head>
 
 <body>
 
+
+
+
+<div class="d-flex" id="wrapper">
+<?php  include "../view/side_bar.php"; ?>
 <div id="page-content-wrapper">
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom ">
-        <button class="btn btn-light " id="menu-toggle">Ocultar menu lateral</button>
-
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-                <li class="nav-item active">
-                    <a class="nav-link" href="menu_usuario.php">Inicio<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                       <?php echo $usuario1 ?>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Preferencias</a>
-                        <a class="dropdown-item" href="#">Sair</a>
-                        <div class="dropdown-divider"></div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <div class="d-flex" id="wrapper">
-
-        <!-- Sidebar -->
-        <div class="bg-light border-right" id="sidebar-wrapper">
-            <div class="sidebar-heading">Linguagens de Programação</div>
-            <div class="list-group list-group-flush">
-                <a href="cadastrar_dados.php" class="list-group-item list-group-item-action bg-light text-dark">Cadastrar Dados</a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">Ver Despesas</a>
-                <a href="listar_usuarios.php" class="list-group-item list-group-item-action bg-light bg-dark text-light">Listar Usuarios</a>
-                <a href="Listar_Produtos.php" class="list-group-item list-group-item-action bg-light">Produtos Cadastrados</a>
-                <a href="graficos.php" class="list-group-item list-group-item-action bg-light">Gráficos</a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">Status</a>
-            </div>
-        </div>
-
-
-
-
-        <div class="container-fluid ">
+        <div class="container ">
             <h1 class="mt-4 text-center">Lista de Clientes</h1>
 
 
-            <div class=" border border-warning p-3">
-                <div class="row"
-                <div class="col-12 ">
+            <div class="  row border border-warning p-3">
+             
+               
                     <section>
-                        <div class="col-md-12 offset-md-3">
+                        <div class="col-md-12 ">
                             <div class=" text-center">
 
                                 <?php
@@ -119,42 +78,44 @@ $usuario1 = $valor['nome'];
                                     $email = $linha["email"];
 
                                     echo "  <div class='row'>
-                                                    <div class='col-md-12 offset-md-3'>
+                                                    <div class='col-md-6'>
                                                           <label for='produto'>Nome($linha[0]):</label></br>
                                                           <input type='text' class='form-control' maxlength='100' name='nome' value='$nome'>  
                                                    </div>
                                                    
-                                                    <div class='col-md-12 offset-md-3'>
+                                                    <div class='col-md-6'>
                                                            <label for='cpf'>CPF:</label>
-                                                           <input type='number' class='form-control' name='cpf' value='$cpf' >
+                                                           <input type='number' class='form-control' name='cpf' value='$cpf' >   <br/>
                                                     </div>
-                                            </div>
-                                            <div class='row'>
-                                                    <div class='col-md-12 offset-md-3'>
+                                                 
+                                                    
+                                                    <div class='col-md-6'>
                                                        <label for='telefone'>Telefone:</label>
                                                         <input type='number' class='form-control' name='telefone' value='$telefone'>
                                                     </div>
                                                     
-                                                    <div class='col-md-12 offset-md-3'>
+                                                    <div class='col-md-6'>
                                                         <label for='email'>Email:</label>
                                                         <input type='text' class='form-control' name='email' value='$email'>
                                                     </div>
-                                                       <br/>
-                                                    <div class='text-center'>  
+                                                      
+                                                       
+                                                    <div class='text-center col-md-12 mt-4'>  
                                                         <a href='../view/editar_usuario.php?cod_usuario=$cod_usuario'><button  class='btn btn-info text-light' type='submit'>Editar</button></a>
                                                         <a href='../php/excluir_usuario.php?cod_usuario=$cod_usuario'<button  class='btn btn-warning text-light' type='submit'>Excluir</button></a>
                                                         <hr>
                                                     </div>  
+                                                   
                                            </div>";
                                 }
                                 ?>
                             </div>
                         </div>
-
+                            
                     </section>
-                </div>
+                
 
-            </div>
+        
 
 
         </div>

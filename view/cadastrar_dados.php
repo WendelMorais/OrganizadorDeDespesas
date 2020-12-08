@@ -12,7 +12,14 @@ if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == tru
 
 $logado = $_SESSION['email'];
 
+$query = "select nome from usuario where email = '$logado' ";
 
+$consulta = mysqli_query($conectou,$query);
+
+$valor =  mysqli_fetch_array($consulta);
+
+
+$usuario1 = $valor['nome'];
 
 
 ?>
@@ -35,75 +42,29 @@ $logado = $_SESSION['email'];
     <!-- Custom styles for this template -->
     <link href="../css/simple-sidebar.css" rel="stylesheet">
 
+
+    <?php  include "../view/Nav_bar.php"; ?>
 </head>
 
 <body>
 
+
+<div class="d-flex" id="wrapper">
+<?php  include "../view/side_bar.php"; ?>
+
 <div id="page-content-wrapper">
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom ">
-        <button class="btn btn-light " id="menu-toggle">Ocultar menu lateral</button>
-
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-                <li class="nav-item active">
-                    <a class="nav-link" href="menu_usuario.php">Inicio<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <?php $query = "select nome from usuario where email = '$logado' ";
-
-                        $consulta = mysqli_query($conectou,$query);
-
-                        $valor =  mysqli_fetch_array($consulta);
-
-
-                       echo $usuario1 = $valor['nome']; ?>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Preferencias</a>
-                        <a class="dropdown-item" href="#">Sair</a>
-                        <div class="dropdown-divider"></div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <div class="d-flex" id="wrapper">
-
-        <!-- Sidebar -->
-        <div class="bg-light border-right" id="sidebar-wrapper">
-            <div class="sidebar-heading">Linguagens de Programação</div>
-            <div class="list-group list-group-flush">
-                <a href="cadastrar_dados.php" class="list-group-item list-group-item-action bg-dark text-light">Cadastrar Dados</a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">Ver Despesas</a>
-                <a href="listar_usuarios.php" class="list-group-item list-group-item-action bg-light">Listar Usuários</a>
-                <a href="Listar_Produtos.php.php" class="list-group-item list-group-item-action bg-light">Produtos Cadastrados</a>
-                <a href="graficos.php" class="list-group-item list-group-item-action bg-light">Gráficos</a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">Status</a>
-            </div>
-        </div>
-
 
         <div class="container-fluid ">
             <h1 class="mt-4 text-center">Preencha os Campos Abaixo</h1>
             <div class="col">
-                <h3 class="text-center"">Oque você comprou?</h3>
+                <h3 class="text-center">Oque você comprou?</h3>
             </div>
 
 
             <div class="dados border border-warning p-3">
                 <div class="row">
                     <div class="col-12 ">
-                        <form action="../php/salvar_dados.php" method="post">
+                        <form action="../php/salvar_dados" method="post">
                             <div class="col-md-6 offset-md-3 ">
                                 <div class="form-group">
                                     <label for="pagamento">Tipo de pagamento:</label>
@@ -141,6 +102,9 @@ $logado = $_SESSION['email'];
                                 </div>
                             </div>
                             <div class="text-center">
+
+                                <br/>
+                                <br/>
                             <button class="btn btn-info text-light " type="submit">Salvar</button>
                             <button class="btn btn-warning text-light" type="submit">Limpar Campos</button>
                             </div>
@@ -155,7 +119,7 @@ $logado = $_SESSION['email'];
 
     </div>
 </div>
-
+</div>
 
 <!-- /#wrapper -->
 

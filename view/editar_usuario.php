@@ -23,6 +23,16 @@ if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == tru
 $logado = $_SESSION['email'];
 
 
+
+
+$query = "select nome from usuario where email = '$logado' ";
+
+$consulta = mysqli_query($conectou,$query);
+
+$valor =  mysqli_fetch_array($consulta);
+
+
+$usuario1 = $valor['nome'];
 ?>
 
 <!DOCTYPE html>
@@ -43,61 +53,17 @@ $logado = $_SESSION['email'];
     <!-- Custom styles for this template -->
     <link href="../css/simple-sidebar.css" rel="stylesheet">
 
+    <?php  include "../view/Nav_bar.php"; ?>
 </head>
 
-<body>
+<body >
 
-<div id="page-content-wrapper">
+<div class="d-flex" id="wrapper" >
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom ">
-        <button class="btn btn-light " id="menu-toggle">Ocultar menu lateral</button>
+    <!-- Sidebar -->
+    <?php  include "../view/side_bar.php"; ?>
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-                <li class="nav-item active">
-                    <a class="nav-link" href="menu_usuario.php">Inicio<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Usuario
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Preferencias</a>
-                        <a class="dropdown-item" href="#">Sair</a>
-                        <div class="dropdown-divider"></div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <div class="d-flex" id="wrapper">
-
-        <!-- Sidebar -->
-        <div class="bg-light border-right" id="sidebar-wrapper">
-            <div class="sidebar-heading">Linguagens de Programação</div>
-            <div class="list-group list-group-flush">
-                <a href="cadastrar_dados.php" class="list-group-item list-group-item-action bg-light text-dark">Cadastrar Dados</a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">Ver Despesas</a>
-                <li class="list-group">
-                    <a href="listar_usuarios.php" class="list-group-item list-group-item-action  bg-dark text-light">Listar dados</a>
-                    <ul>
-                        <li class="list-group-item list-group-item-action  text-dark my-2" >
-                            <span>Editar Usuário</span>
-                    </ul>
-                </li>
-                <a href="Listar_Produtos.php.php" class="list-group-item list-group-item-action bg-light">Produtos Cadastrados</a>
-                <a href="graficos.php" class="list-group-item list-group-item-action bg-light">Gráficos</a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">Status</a>
-            </div>
-        </div>
 
 
         <div class="container-fluid ">
@@ -110,7 +76,7 @@ $logado = $_SESSION['email'];
             <div class="dados border border-warning p-3">
                 <div class="row">
                     <div class="col-12 ">
-                        <form action="salvar_edicao.php" method="post">
+                        <form action="salvar_edicao" method="post">
                             <input type="hidden" name="cod_usuario" value="--><?php echo $busca_usuario['cod_usuario']; ?><!--"-->
                             <div class="col-md-6 offset-md-3">
                                 <div class="form-group ">

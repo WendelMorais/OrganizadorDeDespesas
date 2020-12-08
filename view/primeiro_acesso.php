@@ -21,7 +21,7 @@
                     <div class="collapse navbar-collapse w-100 order-6 " id="navbarNav">
                         <ul class="navbar-nav  ml-auto">
                             <li class="nav-item active ">
-                                <a class="nav-link" href="../index.php">Inicio<span class="sr-only">(current)</span></a>
+                                <a class="nav-link" href="../index">Inicio<span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item active">
                                 <a class="nav-link" href="#">Features</a>
@@ -45,7 +45,7 @@
             </div>
 
             <div class="col-12  ">
-                <form name="primeiro_acesso" method="post" action="../php/salvar_cadastro.php">
+                <form name="primeiro_acesso" method="post" action="../php/salvar_cadastro">
                     <div class="form-group">
                         <label class="text-light">Seu Nome completo</label>
                         <input type="text" class="form-control" name="nome" placeholder="Seu Nome" required>

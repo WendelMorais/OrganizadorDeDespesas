@@ -7,7 +7,7 @@ $_UP['D:/xampp/htdocs/LP/imagens'] = 'D:/xampp/htdocs/LP/imagens';
 $_UP['tamanho'] = 1024 * 1024 * 2; // 2Mb
 
 // Array com as extensões permitidas
-$_UP['extensoes'] = array('jpg', 'png', 'gif');
+$_UP['extensoes'] = array('jpg', 'png', 'gif', 'pdf');
 
 // Renomeia o arquivo? (Se true, o arquivo será salvo como .jpg e um nome único)
 $_UP['renomeia'] = false;

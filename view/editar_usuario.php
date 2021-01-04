@@ -33,6 +33,7 @@ $valor =  mysqli_fetch_array($consulta);
 
 
 $usuario1 = $valor['nome'];
+$usuario1 = explode(" ", $usuario1);
 ?>
 
 <!DOCTYPE html>

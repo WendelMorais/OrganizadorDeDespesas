@@ -21,7 +21,7 @@ $valor =  mysqli_fetch_array($consulta);
 
 $usuario1 = $valor['nome'];
 
-
+$usuario1 = explode(" ", $usuario1);
 ?>
 
 <!DOCTYPE html>
@@ -63,9 +63,10 @@ $usuario1 = $valor['nome'];
 
             <div class="dados border border-warning p-3">
                 <div class="row">
-                    <div class="col-12 ">
-                        <form action="../php/salvar_dados" method="post">
-                            <div class="col-md-6 offset-md-3 ">
+                    <div class="col-md-12 ">
+                    <div class="row">
+                        <form action="../php/salvar_dados" method="post" class="row">
+                            <div class="col-md-6 ">
                                 <div class="form-group">
                                     <label for="pagamento">Tipo de pagamento:</label>
                                     <select class="form-control" data-size="5" data-live-search="true" data-width="100%" name="pagamento" required>
@@ -75,40 +76,38 @@ $usuario1 = $valor['nome'];
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-6 offset-md-3">
+                            <div class="col-md-6" >
                                 <div class="form-group ">
                                     <label for="produto">Produto:</label>
                                     <input type="text" class="form-control" name="produto" placeholder="Produto" required>
                                 </div>
                             </div>
-                            <div class="col-md-6 offset-md-3">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="valor">Valor:</label>
                                     <input type="text" class="form-control" name="valor" placeholder="R$" required>
                                 </div>
                             </div>
 
-                            <div class="col-md-6 offset-md-3">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="descricao">Descrição do Produto:</label>
                                     <input type="text" class="form-control" name="descricao" placeholder="Descrição" required>
                                 </div>
                             </div>
 
-                            <div class="col-md-6 offset-md-3">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="data">Data:</label>
                                     <input type="date" class="form-control" name="data" required>
                                 </div>
                             </div>
-                            <div class="text-center">
-
-                                <br/>
-                                <br/>
+                            <div class="text-center col-md-12">
                             <button class="btn btn-info text-light " type="submit">Salvar</button>
                             <button class="btn btn-warning text-light" type="submit">Limpar Campos</button>
                             </div>
                         </form>
+                        </div>
                     </div>
                 </div>
 

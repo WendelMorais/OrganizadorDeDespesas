@@ -8,6 +8,7 @@ $buscar_dados = mysqli_query($conectou, $buscar_dados);
 
 $row = mysqli_num_rows($buscar_dados);
 
+utf8_encode((strftime('%A, %d de %B de %Y', strtotime($data))));
 $html = " <table>
 <tr>    
    <th >Produto</th>
@@ -49,7 +50,9 @@ $html .= "   </table> ";
 $arquivo = "Listagem.pdf";
 
 $mpdf= new mPDF();
+
 $mpdf->SetDisplayMode('fullpage');
+$PDFContent = mb_convert_encoding($PDFContent, 'UTF-8', 'UTF-8');
 $mpdf->WriteHTML($html);
 $mpdf->Output($arquivo, 'I');
 

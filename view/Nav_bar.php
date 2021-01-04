@@ -1,4 +1,8 @@
+<?php
 
+
+
+?>
   <nav class="navbar navbar-expand-lg navbar-dark border-bottom border-info " style="background-color: #373737;">
         <button class="btn btn-light " id="menu-toggle">Ocultar menu lateral</button>
 
@@ -16,7 +20,7 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                       <?php echo $usuario1   ?>
+                       <?php echo $usuario1[0]   ?>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#">Preferencias</a>

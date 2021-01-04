@@ -22,6 +22,7 @@ $consulta = mysqli_query($conectou,$query);
 
 
 $usuario1 = $valor['nome'];
+$usuario1 = explode(" ", $usuario1);
 
 ?>
 

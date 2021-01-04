@@ -25,9 +25,8 @@ background-color: #000000! important;
               <a href="Listar_Produtos" class="list-group-item list-group-item-action mt-3 rounded text-light teste" style="background-color: #00a0a0;">Produtos Cadastrados</a>
               <a href="listar_usuarios" class="list-group-item list-group-item-action mt-3 rounded text-light teste" style="background-color: #00a0a0;">Listar Usuários</a>
               <a href="graficos" class="list-group-item list-group-item-action mt-3 rounded text-light teste" style="background-color: #00a0a0;">Gráficos</a>
-              <a href="#" class="list-group-item list-group-item-action  mt-3 rounded text-light teste" style="background-color: #00a0a0;" >Ver Despesas</a>
               <a href="./enviar_arq" class="list-group-item list-group-item-action mt-3  rounded text-light teste" onclick='insereTexto()' value='Inserir texto' style="background-color: #00a0a0;">Enviar arquivos</a>
-              <a href="graficos" class="list-group-item list-group-item-action mt-3 rounded text-light teste" style="background-color: #00a0a0;">Gráficos</a>
+              <a href="tabelas" class="list-group-item list-group-item-action mt-3 rounded text-light teste" style="background-color: #00a0a0;">Tabelas</a>
             </div>
          
     </div>

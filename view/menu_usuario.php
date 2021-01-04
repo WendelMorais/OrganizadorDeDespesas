@@ -1,5 +1,7 @@
 <?php
 include "../php/config.php";
+include "../php/funcoes.php";
+// sessão //
 session_start();
 
 if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == true))
@@ -21,6 +23,16 @@ $valor =  mysqli_fetch_array($consulta);
 
 
 $usuario1 = $valor['nome'];
+
+$usuario1 = explode(" ", $usuario1);
+
+// Fim sessão //
+
+
+//itens do mes anterior //
+
+// itens do mes anterior//
+
 
 ?>
 
@@ -113,6 +125,61 @@ $usuario1 = $valor['nome'];
                     <p>Presente trabalho sendo desenvolvida durante a matéria de Linguagens de Programação, ministrada pelo Profº Rodrigo Antoniazzi. Desenvolvimento Wendel Moura.</p>
                       <p>Para utilização do sistema, selecione alguma opção no side-bar da esquerda. Obrigado!</p>
                   </div>
+          </div>
+          <div class="row text-center mt-4 text-dark">
+                  <div class="col-6">
+                
+                  <table class="table table-bordered">
+                          <thead>
+                            <tr>
+                              <th scope="col"></th>
+                              <th scope="col">Gastos até o momento</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <th scope="row">Valor:</th>
+                              <td><?php echo 'R$ '.vTotal(); ?></td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Saldo:</th>
+                              <td>R$ 10000</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Status Saldo:</th>
+                              <td>Positivo</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        
+                  </div>
+                  <div class="col-6">
+                
+                  <table class="table table-bordered ">
+                          <thead>
+                            <tr>
+                              <th scope="col"></th>
+                              <th scope="col">Lista de itens comprados</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <th scope="row">Esse mês:</th>
+                              <td><?php echo ItensData() ?></td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Mês anterior:</th>
+                              <td><?php echo ItensMesAnterior() ?></td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Nº itens no Ano:</th>
+                              <td><?php echo tItens(); ?></td>
+                            </tr>
+                          </tbody>
+                        </table> 
+                 <div class="row" >
+                 <label class="col-12"> Aqui futuramente vai o footer</label>
+                 </div>
           </div>
             
     </div>
